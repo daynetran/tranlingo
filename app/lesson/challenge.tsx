@@ -17,11 +17,10 @@ export const Challenge = ({
     status,
     selectedOption,
     disabled,
-    type,
-}: Props) => {
+    type, }: Props) => {
     return (
         <div className={cn(
-            "grid gap-2",
+            "grid gap-2 ",
             type === "ASSIST" && "grid-cols-1",
             type === "SELECT" && "grid-cols-2 lg:grid-cols-[repeat(auto-fit,minmax(0,1fr))]"
         )}>

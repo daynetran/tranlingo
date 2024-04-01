@@ -1,6 +1,8 @@
-import { getLesson, getUserProgress } from "@/db/queries";
 import { redirect } from "next/navigation";
-import Quiz from "./quiz";
+
+import { getLesson, getUserProgress } from "@/db/queries";
+
+import { Quiz } from "./quiz";
 
 const LessonPage = async () => {
     const lesson = await getLesson();
@@ -10,7 +12,7 @@ const LessonPage = async () => {
         redirect('/learn');
     }
 
-    const initialPercentage = lesson?.challenges
+    const initialPercentage = lesson.challenges
         .filter((challenge) => challenge.completed)
         .length / lesson.challenges.length * 100;
 
@@ -20,7 +22,8 @@ const LessonPage = async () => {
             initialLessonChallenges={lesson.challenges}
             initialHearts={userProgress.hearts}
             initialPercentage={initialPercentage}
-            userSubscription={null} />
+            userSubscription={null}
+        />
     );
 };
 

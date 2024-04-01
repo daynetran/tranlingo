@@ -64,7 +64,7 @@ export const challengesRelations = relations(challenges, ({ many, one }) => ({
 
 export const challengeOptions = pgTable("challenge_options", {
     id: serial("id").primaryKey(),
-    challengeId: integer("challenger_id").references(() => challenges.id, { onDelete: "cascade" }).notNull(),
+    challengeId: integer("challenge_id").references(() => challenges.id, { onDelete: "cascade" }).notNull(),
     text: text("text").notNull(),
     correct: boolean("correct").notNull(),
     imageSrc: text("image_src"),
