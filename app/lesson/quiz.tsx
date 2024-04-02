@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import { toast } from "sonner";
-import { useAudio, useWindowSize } from "react-use";
+import { useAudio, useWindowSize, useMount } from "react-use";
 import Confetti from 'react-confetti';
 
 import { reduceHearts } from "@/actions/user-progress";
@@ -17,6 +17,7 @@ import { Challenge } from "./challenge";
 import { QuestionBubble } from "./question-bubble";
 import { ResultCard } from "./result-card";
 import { useHeartsModal } from "@/store/use-hearts-modal";
+import { usePracticeModal } from "@/store/use-practice-modal";
 
 type Props = {
     initialPercentage: number;
@@ -37,6 +38,13 @@ export const Quiz = ({
     userSubscription,
 }: Props) => {
     const { open: openHeartsModal } = useHeartsModal();
+    const { open: openPracticeModal } = usePracticeModal();
+
+    useMount(() => {
+        if (initialPercentage === 100) {
+            openPracticeModal();
+        }
+    })
 
     const { width, height } = useWindowSize();
     const [finishAudio] = useAudio({ src: "/finish.mp3", autoPlay: true });
@@ -51,10 +59,13 @@ export const Quiz = ({
         incorrecControls,
     ] = useAudio({ src: "/incorrect.wav" })
 
+    const router = useRouter();
     const [pending, startTransition] = useTransition();
     const [lessonId] = useState(initialLessonId);
     const [hearts, setHearts] = useState(initialHearts);
-    const [percentage, setPercentage] = useState(initialPercentage);
+    const [percentage, setPercentage] = useState(() => {
+        return initialPercentage === 100 ? 0 : initialPercentage
+    });
     const [challenges] = useState(initialLessonChallenges);
     const [activeIndex, setActiveIndex] = useState(() => {
         const uncompletedIndex = challenges.findIndex((challenge) => !challenge.completed);
@@ -63,7 +74,6 @@ export const Quiz = ({
 
     const [selectedOption, setSelectedOption] = useState<number>();
     const [status, setStatus] = useState<"correct" | "wrong" | "none">("none");
-
     const challenge = challenges[activeIndex];
     const options = challenge?.challengeOptions ?? [];
 
@@ -174,9 +184,9 @@ export const Quiz = ({
                     </div>
                 </div>
                 <Footer
-                    lessonId={lessonId}
+                    lessonId={lessonId - 1}
                     status="completed"
-                    onCheck={() => useRouter().push("/learn")}
+                    onCheck={() => router.push("/learn")}
                 />
             </>
         )

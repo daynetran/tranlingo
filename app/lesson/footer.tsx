@@ -20,7 +20,6 @@ export const Footer = ({
 }: Props) => {
     useKey("Enter", onCheck, {}, [onCheck]);
     const isMobile = useMedia("(max-width: 1024px)");
-
     return (
         <footer className={cn(
             "lg:h-[140px] h-[100px] border-t-2",
@@ -44,7 +43,7 @@ export const Footer = ({
                     <Button
                         variant="default"
                         size={isMobile ? "sm" : "lg"}
-                        onClick={() => window.location.href = `/lesson/${lessonId}`}
+                        onClick={() => window.location.href = `/lesson/${lessonId}`} // hack: retrigger useMount in 'quiz' so we can open practice modal
                     >
                         Practice again!
                     </Button>
