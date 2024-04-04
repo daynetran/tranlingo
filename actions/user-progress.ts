@@ -8,6 +8,8 @@ import { and, eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
+const POINTS_TO_REFILL = 10;
+
 export const upsertUserProgress = async (courseId: number) => {
     const { userId } = auth();
     const user = await currentUser();
@@ -38,18 +40,17 @@ export const upsertUserProgress = async (courseId: number) => {
         revalidatePath("/courses/")
         revalidatePath("/learn/")
         redirect("/learn")
+    } else {
+        await db.insert(userProgress).values({
+            userId,
+            activeCourseId: courseId,
+            userName: user.firstName || "User",
+            userImageSrc: user.imageUrl || "/mascot.svg",
+        })
+        revalidatePath("/courses/")
+        revalidatePath("/learn/")
+        redirect("/learn")
     }
-
-
-    await db.insert(userProgress).values({
-        userId,
-        activeCourseId: courseId,
-        userName: user.firstName || "User",
-        userImageSrc: user.imageUrl || "/mascot.svg",
-    })
-    revalidatePath("/courses/")
-    revalidatePath("/learn/")
-    redirect("/learn")
 }
 
 export const reduceHearts = async (challengeId: number) => {
@@ -102,4 +103,30 @@ export const reduceHearts = async (challengeId: number) => {
     revalidatePath("/quests");
     revalidatePath("/learn");
     revalidatePath(`/lesson/${lessonId}`);
+}
+
+export const refillHearts = async () => {
+    const currentUserProgress = await getUserProgress();
+
+    if (!currentUserProgress) {
+        throw new Error("User progress not found");
+    }
+
+    if (currentUserProgress.hearts === 5) {
+        throw new Error("Hearts are already full");
+    }
+
+    if (currentUserProgress.points < POINTS_TO_REFILL) {
+        throw new Error("Not enough points")
+    }
+
+    await db.update(userProgress).set({
+        hearts: 5,
+        points: currentUserProgress.points - POINTS_TO_REFILL,
+    }).where(eq(userProgress.userId, currentUserProgress.userId));
+
+    revalidatePath("/shop")
+    revalidatePath("/learn")
+    revalidatePath("/quests")
+    revalidatePath("leaderboard")
 }

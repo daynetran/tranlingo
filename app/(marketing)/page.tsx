@@ -1,8 +1,9 @@
-import { Button } from "@/components/ui/button";
-import { ClerkLoaded, ClerkLoading, SignInButton, SignUpButton, SignedIn, SignedOut } from "@clerk/nextjs";
+import Link from "next/link";
 import { Loader } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
+import { ClerkLoaded, ClerkLoading, SignInButton, SignUpButton, SignedIn, SignedOut } from "@clerk/nextjs";
+
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
     return (
@@ -12,7 +13,7 @@ export default function Home() {
             </div>
             <div className="flex flex-col items-center gap-y-8">
                 <h1 className="text-xl lg:text-3xl font-bold text-neutral-600 max-w-[480px] text-center">
-                    Learn, practice, and master new languages with Lingo.
+                    Learn, practice, and master the languages with TranLingo.
                 </h1>
                 <div className="flex flex-col items-center gap-y-3 max-w-[330px] w-full">
                     <ClerkLoading>
