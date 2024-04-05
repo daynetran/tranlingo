@@ -50,6 +50,13 @@ const main = async () => {
                 title: "Unit 1",
                 description: "Learn the basics of Spanish",
                 order: 1,
+            },
+            {
+                id: 2,
+                courseId: 1,
+                title: "Unit 2",
+                description: "Learn intermediate Spanish",
+                order: 2
             }
         ]);
 
@@ -70,19 +77,19 @@ const main = async () => {
                 id: 3,
                 unitId: 1, // Unit 1 (Learn the basics...)
                 order: 3,
-                title: "Verbs",
+                title: "People",
             },
             {
                 id: 4,
                 unitId: 1, // Unit 1 (Learn the basics...)
                 order: 4,
-                title: "Verbs",
+                title: "Places",
             },
             {
                 id: 5,
                 unitId: 1, // Unit 1 (Learn the basics...)
                 order: 5,
-                title: "Verbs",
+                title: "Food",
             },
         ]);
 
@@ -179,29 +186,6 @@ const main = async () => {
             },
         ]);
 
-        await db.insert(schema.challenges).values([
-            {
-                id: 4,
-                lessonId: 2, // Verbs
-                type: "SELECT",
-                order: 1,
-                question: 'Which one of these is the "the man"?',
-            },
-            {
-                id: 5,
-                lessonId: 2, // Verbs
-                type: "ASSIST",
-                order: 2,
-                question: '"the man"',
-            },
-            {
-                id: 6,
-                lessonId: 2, // Verbs
-                type: "SELECT",
-                order: 3,
-                question: 'Which one of these is the "the robot"?',
-            },
-        ]);
         console.log("Seeding finished");
     } catch (error) {
         console.error(error);

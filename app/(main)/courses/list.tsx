@@ -28,7 +28,7 @@ export const List = ({ courses, activeCourseId }: Props) => {
 
         startTransition(() => {
             upsertUserProgress(id)
-                .catch(() => toast.error("something went wrong"));
+                .catch(() => toast.error("We cannot provide the course at this moment."));
         })
     }
 
