@@ -15,7 +15,6 @@ export const upsertChallengeProgress = async (challengeId: number) => {
     }
 
     const currentUserProgress = await getUserProgress();
-    // TODO: Handle query subscription query later
 
     if (!currentUserProgress) {
         throw new Error("User progress not found")
@@ -40,7 +39,6 @@ export const upsertChallengeProgress = async (challengeId: number) => {
 
     const isPractice = !!existingChallengeProgress;
 
-    // TODO: Not if user has a subscription
     if (currentUserProgress.hearts === 0 && !isPractice) {
         return { error: "hearts" }
     }

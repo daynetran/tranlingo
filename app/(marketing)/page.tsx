@@ -7,14 +7,17 @@ import { Button } from "@/components/ui/button";
 
 export default function Home() {
     return (
-        <div className="max-w-[988px] mx-auto flex-1 w-full flex flex-col lg:flex-row items-center justify-center p-4 gap-2">
-            <div className="relative w-[240px] h-[240px] lg:w-[424px] lg:h-[424px] mb-8 lg:mb-0">
+        <section className="max-w-screen-lg mx-auto flex-1 w-full flex flex-col lg:flex-row items-center justify-center p-6 gap-6">
+            <div className="relative w-64 h-64 lg:w-[480px] lg:h-[424px] mb-8 lg:mb-0">
                 <Image src="/hero.svg" fill alt="hero" />
             </div>
-            <div className="flex flex-col items-center gap-y-8">
+            <section className="flex flex-col items-center gap-y-6">
                 <h1 className="text-xl lg:text-3xl font-bold text-neutral-600 max-w-[480px] text-center">
-                    Learn, practice, and master the languages with TranLingo.
+                    Hi, my name is <span className="font-extrabold text-green-500">Dayne Tran</span>.
                 </h1>
+                <p className="text-base lg:text-xl font-semibold text-neutral-600 max-w-[480px] text-center">
+                    Welcome to my education platform, <span className="text-green-500 font-bold">TranLingo</span>. Learn, practice, and master the languages that have shaped who I am today.
+                </p>
                 <div className="flex flex-col items-center gap-y-3 max-w-[330px] w-full">
                     <ClerkLoading>
                         <Loader className="h-5 w-5 text-muted-foreground animate-spin" />
@@ -27,13 +30,13 @@ export default function Home() {
                                 afterSignUpUrl="/learn"
                             >
                                 <Button size="lg" variant="secondary" className="w-full">
-                                    Get Started
+                                    Get started
                                 </Button>
                             </SignUpButton>
                             <SignInButton
                                 mode="modal"
-                                afterSignUpUrl="learn"
-                                afterSignInUrl="learn"
+                                afterSignUpUrl="/courses"
+                                afterSignInUrl="/courses"
                             >
                                 <Button size="lg" variant="primaryOutline" className="w-full">
                                     I already have an account
@@ -49,7 +52,7 @@ export default function Home() {
                         </SignedIn>
                     </ClerkLoaded>
                 </div>
-            </div>
-        </div>
+            </section>
+        </section>
     )
 }

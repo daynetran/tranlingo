@@ -21,7 +21,6 @@ const ShopPage = async () => {
                     activeCourse={userProgress.activeCourse}
                     hearts={userProgress.hearts}
                     points={userProgress.points}
-                    hasActiveSubscription={false}
                 />
             </StickyWrapper>
             <FeedWrapper>
@@ -41,7 +40,6 @@ const ShopPage = async () => {
                     <Items
                         hearts={userProgress.hearts}
                         points={userProgress.points}
-                        hasActiveSubscription={false} // Add subscription
                     />
                 </div>
             </FeedWrapper>

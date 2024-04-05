@@ -1,14 +1,14 @@
 "use server"
 
 import db from "@/db/drizzle";
-import { getCourseById, getUserProgress } from "@/db/queries";
-import { challengeProgress, challenges, userProgress } from "@/db/schema";
 import { auth, currentUser } from "@clerk/nextjs"
 import { and, eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
-const POINTS_TO_REFILL = 10;
+import { getCourseById, getUserProgress } from "@/db/queries";
+import { challengeProgress, challenges, userProgress } from "@/db/schema";
+import { POINTS_TO_REFILL } from "@/constants";
 
 export const upsertUserProgress = async (courseId: number) => {
     const { userId } = auth();
@@ -121,7 +121,7 @@ export const refillHearts = async () => {
     }
 
     await db.update(userProgress).set({
-        hearts: 5,
+        hearts: Math.min(currentUserProgress.hearts + 1, 5),
         points: currentUserProgress.points - POINTS_TO_REFILL,
     }).where(eq(userProgress.userId, currentUserProgress.userId));
 

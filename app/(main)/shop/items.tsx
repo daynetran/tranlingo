@@ -5,19 +5,17 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { useTransition } from "react";
 import { toast } from "sonner";
+import { POINTS_TO_REFILL } from "@/constants";
 
 type Props = {
     hearts: number;
     points: number;
-    hasActiveSubscription: boolean;
 }
 
-const POINTS_TO_REFILL = 10;
 
 export const Items = ({
     hearts,
     points,
-    hasActiveSubscription
 }: Props) => {
     const [pending, startTransition] = useTransition();
 
