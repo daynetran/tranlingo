@@ -39,7 +39,7 @@ export const LessonButton = ({
     } else {
         indentationLevel = cycleIndex - 8;
     }
-    const test = 0;
+
     const rightPosition = indentationLevel * 40;
 
     const isFirst = index === 0;
