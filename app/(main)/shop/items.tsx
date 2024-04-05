@@ -55,7 +55,7 @@ export const Items = ({
                     {hearts === 5
                         ? "full"
                         : (
-                            <div className="flex items-center">
+                            <div className="flex gap-1 items-center">
                                 <Image
                                     src="/points.svg"
                                     alt="Points"
@@ -63,7 +63,16 @@ export const Items = ({
                                     width={20}
                                 />
                                 <p>
-                                    {POINTS_TO_REFILL}
+                                    {POINTS_TO_REFILL} for
+                                </p>
+                                <Image
+                                    src="/heart.svg"
+                                    alt="Hearts"
+                                    height={20}
+                                    width={20}
+                                />
+                                <p>
+                                    1
                                 </p>
                             </div>
                         )

@@ -8,10 +8,12 @@ const CoursesPage = async () => {
 
     return (
         <div className="h-full max-w-[912px] px-3 mx-auto">
-            <h1 className="text-2xl font-bold text-neutral-700">
+            <h1 className="text-2xl font-bold pb-6 text-neutral-700">
                 Language Courses
             </h1>
-            <p className="text-base text-neutral-700 pt-6">
+            <span className="text-lg font-semibold">A brief introduction: </span>
+            <br /> <br />
+            <p className="text-base text-neutral-700 ">
                 My mother and her family came from Seoul, South Korea, to the United States in 1986.
                 In her teenage years, she quickly learned to integrate her Korean heritage with
                 her new American surroundings. In turn, she made sure to share her culture with my brother and I, raising us on

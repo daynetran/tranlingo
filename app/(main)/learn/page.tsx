@@ -7,6 +7,10 @@ import { getCourseProgress, getLessonPercentage, getUnits, getUserProgress } fro
 
 import { Header } from "./header";
 import { Unit } from "./unit";
+import { Promo } from "@/components/promo";
+import { Suspense } from "react";
+import Loading from "./Loading";
+import { Quests } from "@/components/quests";
 
 const LearnPage = async () => {
     const userProgress = await getUserProgress();
@@ -30,6 +34,8 @@ const LearnPage = async () => {
                     hearts={userProgress.hearts}
                     points={userProgress.points}
                 />
+                <Promo />
+                <Quests points={userProgress.points} />
             </StickyWrapper>
             <FeedWrapper>
                 <Header title={userProgress.activeCourse.title} />

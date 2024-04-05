@@ -26,6 +26,7 @@ export const SidebarItem = ({
             variant={active ? "sidebarOutline" : "sidebar"}
             className="justify-start h-[52px]"
             disabled={noCourses}
+            asChild
         >
             <Link href={href} className="w-full flex justify-start items-center ">
                 <Image

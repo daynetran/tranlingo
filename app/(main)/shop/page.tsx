@@ -7,6 +7,8 @@ import { UserProgress } from "@/components/user-progress"
 import { getUserProgress } from "@/db/queries"
 
 import { Items } from "./items";
+import { Promo } from "@/components/promo";
+import { Quests } from "@/components/quests";
 
 const ShopPage = async () => {
     const userProgress = await getUserProgress();
@@ -22,6 +24,8 @@ const ShopPage = async () => {
                     hearts={userProgress.hearts}
                     points={userProgress.points}
                 />
+                <Promo />
+                <Quests points={userProgress.points} />
             </StickyWrapper>
             <FeedWrapper>
                 <div className="w-full flex flex-col items-center">
@@ -35,7 +39,7 @@ const ShopPage = async () => {
                         Shop
                     </h1>
                     <p className="text-muted-foreground text-center text-lg mb-6">
-                        Spend your points on cool stuff.
+                        Spend your points to regain hearts.
                     </p>
                     <Items
                         hearts={userProgress.hearts}

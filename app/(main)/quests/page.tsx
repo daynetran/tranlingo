@@ -6,29 +6,9 @@ import { StickyWrapper } from "@/components/sticky-wrapper"
 import { UserProgress } from "@/components/user-progress"
 import { getUserProgress } from "@/db/queries"
 import { Progress } from "@/components/ui/progress";
+import { Promo } from "@/components/promo";
+import { QUESTS } from "@/constants";
 
-const quests = [
-    {
-        title: "Earn 20 XP",
-        value: 20
-    },
-    {
-        title: "Earn 50 XP",
-        value: 50
-    },
-    {
-        title: "Earn 100 XP",
-        value: 100
-    },
-    {
-        title: "Earn 500 XP",
-        value: 500
-    },
-    {
-        title: "Earn 1000 XP",
-        value: 1000
-    },
-]
 
 const LeaderboardPage = async () => {
     const userProgress = await getUserProgress();
@@ -44,6 +24,7 @@ const LeaderboardPage = async () => {
                     hearts={userProgress.hearts}
                     points={userProgress.points}
                 />
+                <Promo />
             </StickyWrapper>
             <FeedWrapper>
                 <div className="w-full flex flex-col items-center">
@@ -60,7 +41,7 @@ const LeaderboardPage = async () => {
                         Complete quests by earning points!
                     </p>
                     <ul className="w-full">
-                        {quests.map((quest) => {
+                        {QUESTS.map((quest) => {
                             const progress = (userProgress.points / quest.value) * 100;
 
                             return (
