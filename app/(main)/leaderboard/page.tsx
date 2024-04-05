@@ -7,6 +7,7 @@ import { UserProgress } from "@/components/user-progress"
 import { getTopTenUsers, getUserProgress } from "@/db/queries"
 import { Separator } from "@/components/ui/separator";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import { toast } from "sonner";
 
 
 const LeaderboardPage = async () => {

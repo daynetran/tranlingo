@@ -4,20 +4,20 @@ import { usePathname } from "next/navigation";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import Image from "next/image";
+import { getUserProgress } from "@/db/queries";
 
 type Props = {
     label: string;
     iconSrc: string;
     href: string;
-    noCourses: boolean;
 };
 
-export const SidebarItem = ({
+export const SidebarItem = async ({
     label,
     iconSrc,
     href,
-    noCourses,
 }: Props) => {
+    const user = await getUserProgress();
     const pathname = usePathname();
     const active = pathname === href;
 
@@ -25,9 +25,9 @@ export const SidebarItem = ({
         <Button
             variant={active ? "sidebarOutline" : "sidebar"}
             className="justify-start h-[52px]"
-            disabled={noCourses}
+            asChild
         >
-            <Link href={href} className="w-full flex justify-start items-center ">
+            <Link href={href}>
                 <Image
                     src={iconSrc}
                     alt={label}

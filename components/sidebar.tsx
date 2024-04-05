@@ -6,12 +6,16 @@ import { ClerkLoaded, ClerkLoading, UserButton } from "@clerk/nextjs";
 import { cn } from "@/lib/utils"
 
 import { SidebarItem } from "./sidebar-item";
+import { getCourseProgress } from "@/db/queries";
 
 type Props = {
     className?: string;
 }
 
-export const Sidebar = ({ className }: Props) => {
+export const Sidebar = async ({ className }: Props) => {
+    const courseProgress = await getCourseProgress();
+    const noCourses = courseProgress === null;
+
     return (
         <div className={cn(
             "flex h-full lg:w-[256px] lg:fixed left-0 top-0 px-4 border-r-2 flex-col",
@@ -26,10 +30,10 @@ export const Sidebar = ({ className }: Props) => {
                 </div>
             </Link>
             <div className="flex flex-col gap-y-2 flex-1">
-                <SidebarItem label="Learn" href="/learn" iconSrc="/learn.svg" />
-                <SidebarItem label="Leaderboard" href="/leaderboard" iconSrc="/leaderboard.svg" />
-                <SidebarItem label="Quests" href="/quests" iconSrc="/quests.svg" />
-                <SidebarItem label="Shop" href="/shop" iconSrc="/shop.svg" />
+                <SidebarItem label="Learn" href="/learn" iconSrc="/learn.svg" noCourses={noCourses} />
+                <SidebarItem label="Leaderboard" href="/leaderboard" iconSrc="/leaderboard.svg" noCourses={noCourses} />
+                <SidebarItem label="Quests" href="/quests" iconSrc="/quests.svg" noCourses={noCourses} />
+                <SidebarItem label="Shop" href="/shop" iconSrc="/shop.svg" noCourses={noCourses} />
             </div>
             <div className="p-4">
                 <ClerkLoading>
