@@ -4,13 +4,11 @@ import { FeedWrapper } from "@/components/feed-wrapper";
 import { StickyWrapper } from "@/components/sticky-wrapper";
 import { UserProgress } from "@/components/user-progress";
 import { getCourseProgress, getLessonPercentage, getUnits, getUserProgress } from "@/db/queries";
+import { Promo } from "@/components/promo";
+import { Quests } from "@/components/quests";
 
 import { Header } from "./header";
 import { Unit } from "./unit";
-import { Promo } from "@/components/promo";
-import { Suspense } from "react";
-import Loading from "./Loading";
-import { Quests } from "@/components/quests";
 
 const LearnPage = async () => {
     const userProgress = await getUserProgress();
