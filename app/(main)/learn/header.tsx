@@ -17,7 +17,6 @@ export const Header = ({ title }: Props) => {
             <h1 className="font-bold text-lg">
                 {title}
             </h1>
-            <div></div>
         </div>
     )
 }

@@ -1,5 +1,6 @@
 import { getCourses, getUserProgress } from "@/db/queries";
 import { List } from "./list";
+import { LoadingCard } from "./loading";
 
 const CoursesPage = async () => {
     const courses = await getCourses();
