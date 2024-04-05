@@ -21,7 +21,7 @@ const Loading = () => {
                 <br /> <br />
                 My father and his family traveled from Saigon, Vietnam, to the United States in 1980, with only a hundred dollars to their name.
                 They built decent, respectable lives for themselves in the New England area, and they too never forgot their heritage. My father
-                brought my brother and I many times to Little Saigon in Garden Grove, to see the Lunar New Year's celebrations, indulge in delicious Phở, and
+                brought my brother and I many times to Little Saigon in Garden Grove, to see the Lunar New Year&apos;s celebrations, indulge in delicious Phở, and
                 immerse ourselves in Vietnamese culture.
                 <br /> <br />
                 Lastly, my uncle married his wife in Amsterdam, Netherlands in 2008 and invited my family to the wedding. It is my fondest of my early trips abroad.
