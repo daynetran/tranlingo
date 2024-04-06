@@ -20,7 +20,7 @@ import { usePathname } from "next/navigation";
 
 export const MobileSidebar = () => {
     const pages = ["learn", "courses", "leaderboard", "quests", "shop"]
-
+    const pathName = usePathname()
     return (
         <Sheet>
             <SheetTrigger asChild>
@@ -39,7 +39,7 @@ export const MobileSidebar = () => {
                 </SheetHeader>
                 <div className="flex flex-col gap-y-2 flex-1">
                     {pages.map((p) => {
-                        const isActive = usePathname() === `/${p}`
+                        const isActive = pathName === `/${p}`
                         return (
                             <SheetClose asChild>
                                 <Button
@@ -51,7 +51,7 @@ export const MobileSidebar = () => {
                                         <Image
                                             src={`/${p}.svg`}
                                             alt={p}
-                                            className="mr-5"
+                                            className="mr-5 bg-blue-300"
                                             width={32}
                                             height={32}
                                         />
