@@ -30,7 +30,7 @@ export const MobileMenu = async () => {
                     <ChevronLeft className="text-white" />
                 </div>
             </SheetTrigger>
-            <SheetContent side="right" className="flex h-full lg:w-[256px] border-r-2 flex-col">
+            <SheetContent side="right" className="flex h-full lg:w-[256px] flex-col overflow-auto">
                 <SheetHeader>
                 </SheetHeader>
                 <UserProgress
