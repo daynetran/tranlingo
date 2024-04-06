@@ -41,7 +41,7 @@ export const MobileSidebar = () => {
                     {pages.map((p) => {
                         const isActive = pathName === `/${p}`
                         return (
-                            <SheetClose asChild>
+                            <SheetClose asChild key={p}>
                                 <Button
                                     variant={isActive ? "sidebarOutline" : "sidebar"}
                                     className="justify-start h-[52px]"
