@@ -51,7 +51,7 @@ export const MobileSidebar = () => {
                                         <Image
                                             src={`/${p}.svg`}
                                             alt={p}
-                                            className="mr-5 bg-blue-300"
+                                            className="mr-5 "
                                             width={32}
                                             height={32}
                                         />

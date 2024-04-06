@@ -21,7 +21,7 @@ export const MobileMenu = async () => {
     const userProgress = await getUserProgress();
 
     if (!userProgress || !userProgress.activeCourse) {
-        redirect('/courses')
+        return;
     }
     return (
         <Sheet>
