@@ -4,10 +4,10 @@ import { auth } from "@clerk/nextjs";
 
 import db from "./drizzle";
 import { challengeProgress, courses, lessons, units, userProgress } from "./schema";
+import { revalidatePath } from "next/cache";
 
 export const getCourses = cache(async () => {
     const data = await db.query.courses.findMany();
-
     return data;
 })
 

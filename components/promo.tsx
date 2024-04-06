@@ -13,12 +13,13 @@ export const Promo = () => {
                         alt="Me"
                         height={26}
                         width={26}
+                        className="hidden lg:block"
                     />
-                    <h3 className="font-bold text-lg">
+                    <h3 className="font-bold text-base lg:text-lg">
                         Do you like what you see?
                     </h3>
                 </div>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground text-md lg:text-base">
                     Visit daynetran.com to explore my writings, projects, and more related to software engineering.
                 </p>
             </div>

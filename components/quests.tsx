@@ -27,6 +27,7 @@ export const Quests = ({ points }: Props) => {
                         <Button
                             size="sm"
                             variant="primaryOutline"
+                            className="hidden lg:block"
                         >
                             View all
                         </Button>

@@ -32,7 +32,7 @@ export const Items = ({
 
     return (
         <ul className="w-full">
-            <div className="flex items-center w-full p-4  gap-x-4">
+            <div className="flex flex-col lg:flex-row items-center w-full p-4  gap-4">
                 <Image
                     src="/heart.svg"
                     alt="heart"

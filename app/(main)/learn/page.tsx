@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import Image from "next/image";
 
 import { FeedWrapper } from "@/components/feed-wrapper";
 import { StickyWrapper } from "@/components/sticky-wrapper";
@@ -36,7 +37,8 @@ const LearnPage = async () => {
                 <Quests points={userProgress.points} />
             </StickyWrapper>
             <FeedWrapper>
-                <Header title={userProgress.activeCourse.title} />
+
+                <Header title={userProgress.activeCourse.title} imageSrc={userProgress.activeCourse.imageSrc} />
                 {units.map((unit) => (
                     <div key={unit.id} className="mb-10">
                         <Unit

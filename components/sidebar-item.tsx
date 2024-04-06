@@ -9,14 +9,12 @@ type Props = {
     label: string;
     iconSrc: string;
     href: string;
-    noCourses: boolean;
 };
 
 export const SidebarItem = ({
     label,
     iconSrc,
     href,
-    noCourses,
 }: Props) => {
     const pathname = usePathname();
     const active = pathname === href;
@@ -25,7 +23,6 @@ export const SidebarItem = ({
         <Button
             variant={active ? "sidebarOutline" : "sidebar"}
             className="justify-start h-[52px]"
-            disabled={noCourses}
             asChild
         >
             <Link href={href} className="w-full flex justify-start items-center ">
